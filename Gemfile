@@ -13,9 +13,6 @@ gem 'foreman'
 gem "sinatra-sane-logging", require: "sinatra/sane_logging"
 gem "json-schema"
 
-gem "pry"
-gem "pry-remote"
-
 # Use Unicorn as the app server
 # gem 'unicorn'
 
@@ -24,7 +21,8 @@ gem "pry-remote"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug'
+  gem "pry"
+  gem "pry-remote"
 end
 
 group :development do
