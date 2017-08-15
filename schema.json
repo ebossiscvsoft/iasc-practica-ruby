@@ -1,0 +1,19 @@
+{
+  "type": "object",
+  "required": [
+    "lectura"
+  ],
+  "properties": {
+    "lectura": {
+      "type": "object",
+      "required": [
+        "cantidad_datos"
+      ],
+      "properties": {
+          "cantidad_datos": {
+            "type": "integer"
+          }
+      }
+    }
+  }
+}
