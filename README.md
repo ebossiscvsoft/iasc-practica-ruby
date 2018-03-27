@@ -5,7 +5,7 @@
 * Comparar comportamiento de Puma en sus múltiples modos
 * Comparar modelo de procesos y threads
 
-Durante esta práctica estaremos utilizando Ruby 2.3 y JRuby 9.1.
+Durante esta práctica estaremos utilizando Ruby > 2.3 y JRuby 9.1.
 
 ## Instalacion de entornos
 
@@ -21,7 +21,7 @@ echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc # ó .bash_profile
 echo 'eval "$(rbenv init -)"' >> ~/.bashrc # ó .bash_profile
 ```
 
-Y luego, instalar Ruby y [bundler](http://bundler.io/)
+Y luego, instalar Ruby y [bundler](http://bundler.io/):
 
 ```bash
 rbenv install 2.3.1
@@ -29,7 +29,8 @@ rbenv global 2.3.1
 rbenv rehash
 gem install bundler
 ```
-Instalar tambien jruby 9.1
+
+Instalar tambien jruby 9.1:
 
 ```bash
 rbenv install jruby-9.1.16.0
@@ -51,6 +52,7 @@ Esta práctica se realizará en varios pasos. Para cada uno:
 
   * analizar el comportamiento de ambas rutas, anotarlo y comparar con las configuraciones anteriores.
   * analizar qué cantidad de threads del sistema operativo se crean (con `htop`)
+  * probar tanto con un cliente concurrente como con varios
 
 1. Ejecutar utilizando Ruby con Puma, un proceso y un hilo
 2. Ejecutar utilizando Ruby con Puma, N procesos y un hilo
@@ -71,6 +73,11 @@ bundle exec puma
 #### ¿Cómo probar el servidor?
 
 El servidor soporta dos rutas:  `/io_bound` y `/cpu_bound`. Como sus nombres lo indican, la primera realiza una tarea con mínimo procesamiento pero gran cantidad de E/S (lee un archivo), y la segunda es código puro (ejecuta una función factorial).
+
+Para probarlas, se puede utilizar por ejemplo:
+
+* `curl` (desde la terminal)
+* [`Postman`](https://www.getpostman.com/) (desde el browser).
 
 #### ¿Cómo controlar la cantidad de hilos y procesos
 
@@ -101,3 +108,26 @@ get '/cpu_bound' do
   {result: fact(34)}.to_json
 end
 ```
+
+#### ¿Cómo hago para correr este servidor con Ruby? ¿Y con JRuby?
+
+Las instrucciones anteriores corren este servidor con Ruby estándar (MRI, también llamado YARV). Para ejecutarlo con JRuby, es necesario cambiar el intérprete a mano e instalar bundler :
+
+```
+rbenv use jruby-9.1.16.0
+rbenv rehash
+gem install bundler
+```
+
+y luego ejecutar `puma` normalmente.
+
+
+#### ¿Qué puedo hacer si quiero correr (por algún motivo) el servidor con otra versión de ruby?
+
+Tenés que
+
+* modificar el archivo `.ruby-version` y el `Gemfile`,
+* luego `gem install bundler`
+* luego `bundle install`
+
+Y eso es todo.
