@@ -1,4 +1,4 @@
-#Instalacion de entornos
+# Instalacion de entornos
 
 A Continuacion de detallan los pasos para instalar Ruby y JRuby.
 
