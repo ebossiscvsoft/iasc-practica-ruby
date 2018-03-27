@@ -47,7 +47,7 @@ Esto instalará las dependencias y de aqui en más se puede proceder con la prim
 
 ## Consigna
 
-Para cada paso
+Esta práctica se realizará en varios pasos. Para cada uno:
 
   * analizar el comportamiento de ambas rutas, anotarlo y comparar con las configuraciones anteriores.
   * analizar qué cantidad de threads del sistema operativo se crean (con `htop`)
@@ -57,3 +57,47 @@ Para cada paso
 3. Ejecutar utilizando Ruby con Puma, 1 Proceso y N hilos
 4. Ejecutar utilizando Ruby con Puma, N procesos y N hilos
 5. Ejecutar utilizando Jruby con Puma, 1 proceso y N hilos
+
+### FAQ
+
+#### ¿Cómo lanzar el servidor?
+
+Simplemente hay que ejecutar el comando `puma` mediante `bundle exec`:
+
+```
+bundle exec puma
+```
+
+#### ¿Cómo probar el servidor?
+
+El servidor soporta dos rutas:  `/io_bound` y `/cpu_bound`. Como sus nombres lo indican, la primera realiza una tarea con mínimo procesamiento pero gran cantidad de E/S (lee un archivo), y la segunda es código puro (ejecuta una función factorial).
+
+#### ¿Cómo controlar la cantidad de hilos y procesos
+
+El comando `puma` acepta dos parámetros para controlarlos `-t` y `-W`:
+
+* `-t` define la cantidad mínima y máxima de threads
+* `-W` define la cantidad de procesos (llamados _workers_)
+
+Por ejemplo:
+
+```
+# Lanzar puma con 4 hilos
+bundle exec puma -t 4:4
+
+# Lanzar puma con 1 proceso
+bundle exec puma -W 1
+```
+
+Estas opciones son combinables.
+
+#### ¿Qué hago si la tarea cpu bound termina demasiado rápido/demasiado lento en mi máquina?
+
+Ajustá el valor del factorial en `config.ru`
+
+```
+get '/cpu_bound' do
+  # Ajustá el valor del 34 para lograr un calculo que se tome su tiempo pero termine
+  {result: fact(34)}.to_json
+end
+```
