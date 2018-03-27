@@ -29,6 +29,11 @@ rbenv global 2.3.1
 rbenv rehash
 gem install bundler
 ```
+Instalar tambien jruby 9.1
+
+```bash
+rbenv install jruby-9.1.16.0
+```
 
 ### Instalacion de proyecto
 
