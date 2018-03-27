@@ -130,3 +130,5 @@ gem install bundler && bundle install
 Esto instalará las dependencias y de aqui en más se puede proceder con la primera parte de la práctica.
 
 ## Instalacion de JRuby
+
+Seguir las instrucciones descriptas en el siguiente readme [Instalación de JRuby][https://github.com/jruby/jruby/wiki/GettingStarted]
