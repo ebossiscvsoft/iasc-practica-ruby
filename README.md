@@ -48,17 +48,34 @@ Esto instalará las dependencias y de aqui en más se puede proceder con la prim
 
 ## Consigna
 
-Esta práctica se realizará en varios pasos. Para cada uno:
+### Generalidades
+
+Esta práctica se realizará en varios escenarios. Para cada uno:
 
   * analizar el comportamiento de ambas rutas, anotarlo y comparar con las configuraciones anteriores.
   * analizar qué cantidad de threads del sistema operativo se crean (con `htop`)
-  * probar tanto con un cliente concurrente como con varios
+  * probar tanto con un cliente como con varios clientes concurrentes
+
+El objetivo no es obtener tiempos exactos (ya tendremos una práctica sobre ello) sino entender cualiativamente los modelos de SO Threads, Green Threads y Procesos.
+
+#### Escenarios
 
 1. Ejecutar utilizando Ruby con Puma, un proceso y un hilo
-2. Ejecutar utilizando Ruby con Puma, N procesos y un hilo
+2. Ejecutar utilizando Ruby con Puma, N procesos (_clustered_) y un hilo
 3. Ejecutar utilizando Ruby con Puma, 1 Proceso y N hilos
-4. Ejecutar utilizando Ruby con Puma, N procesos y N hilos
+4. Ejecutar utilizando Ruby con Puma, N procesos (_clustered_) y N hilos
 5. Ejecutar utilizando Jruby con Puma, 1 proceso y N hilos
+
+#### Preguntas de auto-evaluación
+
+A partir de las mediciones y comparaciones en cada escenario, deberías poder responder:
+
+* Bajo green threads, si la cantidad de threads aumenta ¿mejora la performance de una tarea cpu bound?
+* Bajo green threads, si la cantidad de threads aumenta ¿mejora la performance de una tarea IO bound?
+* Bajo SO threads, si la cantidad de threads aumenta ¿mejora la performance de una tarea cpu bound?
+* Bajo N procesos (modo clustered), si la cantidad de procesos aumenta por encima de la cantidad de cores de la máquina, ¿mejora la performance de una tarea cpu bound?
+* Los Green threads de Ruby, ¿son realmente green threads? (Tip: analizar mediante `htop` si el sistema operativo los ve)
+* Bonus: ¿Qué sucede si se mata (mediante `kill`) a alguno de los procesos de puma bajo el modelo _clustered_?
 
 ### FAQ
 
@@ -94,6 +111,10 @@ bundle exec puma -t 4:4
 
 # Lanzar puma con 1 proceso
 bundle exec puma -W 1
+
+# Lanzar puma con 2 procesos
+# (lo que se conoce como modo clustered, es decir, que  la cantidad de workers > 1)
+bundle exec puma -W 2
 ```
 
 Estas opciones son combinables.
