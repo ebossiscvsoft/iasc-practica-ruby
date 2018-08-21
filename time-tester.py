@@ -6,14 +6,6 @@ Created on Tue Aug 21 19:50:48 2018
 @author: leandronarosky
 """
 
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-Created on Tue Aug 21 12:25:13 2018
-
-@author: leandronarosky
-"""
-
 import random
 import time
 from uritemplate import URITemplate
@@ -62,9 +54,6 @@ for i in range(num_threads):
     worker.start()
 
 q.join()
-
-#for url in dataset:
-#    do_search(url)
 
 h = sorted([y for (x,y,z) in times])
 print("Mean: "+ str(np.mean(h)))
