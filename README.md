@@ -66,6 +66,22 @@ El objetivo no es obtener tiempos exactos (ya tendremos una práctica sobre ello
 4. Ejecutar utilizando Ruby con Puma, N procesos (_clustered_) y N hilos
 5. Ejecutar utilizando Jruby con Puma, 1 proceso y N hilos
 
+#### Uso de tester concurrente (Requiere python 3)
+
+Ejecutar el script como:
+
+```
+$ ./time-tester.py <url> <cantidad de hilos>
+```
+
+Por ejemplo:
+
+```
+$ ./time-tester.py "http://localhost:9292/cpu_bound" 100
+```
+
+
+
 #### Preguntas de auto-evaluación
 
 A partir de las mediciones y comparaciones en cada escenario, deberías poder responder:
