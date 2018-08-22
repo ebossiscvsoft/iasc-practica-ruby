@@ -98,10 +98,10 @@ Para probarlas, se puede utilizar por ejemplo:
 
 #### ¿Cómo controlar la cantidad de hilos y procesos
 
-El comando `puma` acepta dos parámetros para controlarlos `-t` y `-W`:
+El comando `puma` acepta dos parámetros para controlarlos `-t` y `-w`:
 
 * `-t` define la cantidad mínima y máxima de threads
-* `-W` define la cantidad de procesos (llamados _workers_)
+* `-w` define la cantidad de procesos (llamados _workers_)
 
 Por ejemplo:
 
@@ -110,11 +110,11 @@ Por ejemplo:
 bundle exec puma -t 4:4
 
 # Lanzar puma con 1 proceso
-bundle exec puma -W 1
+bundle exec puma -w 1
 
 # Lanzar puma con 2 procesos
 # (lo que se conoce como modo clustered, es decir, que  la cantidad de workers > 1)
-bundle exec puma -W 2
+bundle exec puma -w 2
 ```
 
 Estas opciones son combinables.
