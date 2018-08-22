@@ -105,7 +105,7 @@ bundle exec puma
 
 #### ¿Cómo probar el servidor?
 
-El servidor soporta dos rutas:  `/io_bound` y `/cpu_bound`. Como sus nombres lo indican, la primera realiza una tarea con mínimo procesamiento pero gran cantidad de E/S (lee un archivo), y la segunda es código puro (ejecuta una función factorial).
+El servidor soporta dos rutas:  `/io_bound` y `/cpu_bound`. Como sus nombres lo indican, la primera realiza una tarea con mínimo procesamiento pero gran cantidad de E/S (lee un archivo), y la segunda es código puro (ejecuta una función fibonacci).
 
 Para probarlas, se puede utilizar por ejemplo:
 
@@ -137,12 +137,12 @@ Estas opciones son combinables.
 
 #### ¿Qué hago si la tarea cpu bound termina demasiado rápido/demasiado lento en mi máquina?
 
-Ajustá el valor del factorial en `config.ru`
+Ajustá el valor del fibonacci en `config.ru`
 
 ```
 get '/cpu_bound' do
   # Ajustá el valor del 34 para lograr un calculo que se tome su tiempo pero termine
-  {result: fact(34)}.to_json
+  {result: fib(34)}.to_json
 end
 ```
 
