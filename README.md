@@ -24,8 +24,8 @@ echo 'eval "$(rbenv init -)"' >> ~/.bashrc # ó .bash_profile
 Y luego, instalar Ruby y [bundler](http://bundler.io/):
 
 ```bash
-rbenv install 2.3.1
-rbenv global 2.3.1
+rbenv install 2.3.6
+rbenv global 2.3.6
 rbenv rehash
 gem install bundler
 ```
