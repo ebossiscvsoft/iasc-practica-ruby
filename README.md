@@ -5,7 +5,7 @@
 * Comparar comportamiento de Puma en sus múltiples modos
 * Comparar modelo de procesos y threads
 
-Durante esta práctica estaremos utilizando Ruby > 2.3 y JRuby 9.1.
+Durante esta práctica estaremos utilizando Ruby 2.6.2 y JRuby 9.2.6.0.
 
 ## Instalacion de entornos
 
@@ -13,38 +13,40 @@ A Continuacion de detallan los pasos para instalar Ruby y JRuby.
 
 ### Instalacion Ruby
 
-Instalar [rbenv](https://github.com/rbenv/rbenv).
+Instalar [rvm](https://rvm.io).
 
 ```bash
-curl -fsSL https://github.com/rbenv/rbenv-installer/raw/master/bin/rbenv-installer | bash
-echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc # ó .bash_profile
-echo 'eval "$(rbenv init -)"' >> ~/.bashrc # ó .bash_profile
+gpg --keyserver hkp://pool.sks-keyservers.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
+\curl -sSL https://get.rvm.io | bash
+echo "source $HOME/.rvm/scripts/rvm" >> ~/.bash_profile
 ```
 
 Y luego, instalar Ruby y [bundler](http://bundler.io/):
 
 ```bash
-rbenv install 2.3.6
-rbenv global 2.3.6
-rbenv rehash
+rvm install 2.6.2
+rvm use 2.6.2
 gem install bundler
 ```
 
-Instalar tambien jruby 9.1:
+Instalar tambien jruby 9.2.6.0:
 
 ```bash
-rbenv install jruby-9.1.16.0
+rvm get head
+rvm install jruby-9.2.6.0
 ```
 
 ### Instalacion de proyecto
 
-Una vez que instalamos RBENV, ejecutar las siguientes instrucciones:
+Una vez que instalamos RVM, ejecutar las siguientes instrucciones:
 
 ```bash
 bundle install
 ```
 
 Esto instalará las dependencias y de aqui en más se puede proceder con la primera parte de la práctica.
+
+Ante cualquier duda referirse a la documentacion de la [página](https://rvm.io/rvm/install)
 
 ## Consigna
 
@@ -151,8 +153,7 @@ end
 Las instrucciones anteriores corren este servidor con Ruby estándar (MRI, también llamado YARV). Para ejecutarlo con JRuby, es necesario cambiar el intérprete a mano e instalar bundler :
 
 ```
-rbenv use jruby-9.1.16.0
-rbenv rehash
+rvm use jruby-9.2.6.0
 gem install bundler
 ```
 
