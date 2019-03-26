@@ -8,7 +8,7 @@ echo "Starting requests"
 
 for (( c=0; c<=$END; c++ ))
 do
-    content= curl -sS -I http://localhost:5000/io_bound
+    content= curl -sS -I http://localhost:9292/io_bound
     echo "${content}" >> out.html
 	sleep $[ ( $RANDOM % $RAND_REQ )  + 1 ]s
 done
