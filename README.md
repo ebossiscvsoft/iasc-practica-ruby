@@ -68,7 +68,7 @@ El objetivo no es obtener tiempos exactos (ya tendremos una práctica sobre ello
 4. Ejecutar utilizando Ruby con Puma, N procesos (_clustered_) y N hilos
 5. Ejecutar utilizando Jruby con Puma, 1 proceso y N hilos
 
-#### Uso de tester concurrente (Requiere python 3)
+#### Uso de tester concurrente (Requiere python 3) [Opcional, si han avanzado bastante en la práctica]
 
 Ejecutar el script como:
 
