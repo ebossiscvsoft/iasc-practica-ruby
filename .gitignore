@@ -45,3 +45,5 @@ bower.json
 .idea
 
 blob.bin
+
+.vscode
