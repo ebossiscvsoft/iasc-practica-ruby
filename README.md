@@ -5,7 +5,7 @@
 * Comparar comportamiento de Puma en sus múltiples modos
 * Comparar modelo de procesos y threads
 
-Durante esta práctica estaremos utilizando Ruby 2.6.2 y JRuby 9.2.6.0.
+Durante esta práctica estaremos utilizando Ruby 2.6.5 y JRuby 9.2.6.0.
 
 ## Instalacion de entornos
 
@@ -24,8 +24,8 @@ echo "source $HOME/.rvm/scripts/rvm" >> ~/.bash_profile
 Y luego, instalar Ruby y [bundler](http://bundler.io/):
 
 ```bash
-rvm install 2.6.2
-rvm use 2.6.2
+rvm install 2.6.5
+rvm use 2.6.5
 gem install bundler
 ```
 
