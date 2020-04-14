@@ -34,6 +34,7 @@ Instalar tambien jruby 9.2.8.0:
 ```bash
 rvm get head
 rvm install jruby-9.2.8.0
+gem install bundler
 ```
 
 ### Instalacion de proyecto
@@ -69,6 +70,14 @@ El objetivo no es obtener tiempos exactos (ya tendremos una práctica sobre ello
 5. Ejecutar utilizando Jruby con Puma, 1 proceso y N hilos
 
 #### Uso de tester concurrente (Requiere python 3) [Opcional, si han avanzado bastante en la práctica]
+
+Para instalar python vean la guia de instalacion de python 3 con virtualenv [aqui](http://arquitecturas-concurrentes.github.io/guias/python3)
+
+una vez instalado y con pip3 instalar las dependencias
+
+```
+$pip3 install -r requirements.txt
+```
 
 Ejecutar el script como:
 
