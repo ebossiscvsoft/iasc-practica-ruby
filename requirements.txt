@@ -22,10 +22,10 @@ matplotlib==3.2.1
 numpy==1.18.2
 olefile==0.46
 pexpect==4.6.0
-Pillow==5.4.1
-psutil==5.5.1
+pillow>=6.2.2
+psutil>=5.6.6
 pycairo==1.16.2
-pycrypto==2.6.1
+pycrypto>=2.6.1
 pycups==1.9.73
 pycurl==7.43.0.2
 PyGObject==3.30.4
@@ -36,7 +36,7 @@ python-apt==1.8.4.1
 python-dateutil==2.8.1
 python-debian==0.1.35
 python-debianbts==2.8.2
-pyxdg==0.25
+pyxdg>=0.26
 reportbug===7.5.3-deb10u1
 reportlab==3.5.13
 requests==2.21.0
@@ -45,4 +45,4 @@ SecretStorage==2.3.1
 six==1.12.0
 unattended-upgrades==0.1
 uritemplate==3.0.1
-urllib3==1.24.1
+urllib3>=1.24.2
