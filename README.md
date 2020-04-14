@@ -73,13 +73,13 @@ El objetivo no es obtener tiempos exactos (ya tendremos una práctica sobre ello
 Ejecutar el script como:
 
 ```
-$ ./time-tester.py <url> <cantidad de hilos>
+$python3 ./time-tester.py <url> <cantidad de hilos>
 ```
 
 Por ejemplo:
 
 ```
-$ ./time-tester.py "http://localhost:9292/cpu_bound" 100
+$python3 ./time-tester.py "http://localhost:9292/cpu_bound" 100
 ```
 
 

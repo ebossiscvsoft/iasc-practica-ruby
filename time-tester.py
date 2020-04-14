@@ -61,7 +61,7 @@ print("Std: " + str(np.std(h)))
 fit = stats.norm.pdf(h, np.mean(h), np.std(h))
 pl.plot(h,fit,'-o')
 pl.xlabel("Time in seconds")
-pl.hist(h,normed=True)     
+pl.hist(h,density=True)     
 pl.show()
 
 count = Counter([x for (x,y,z) in times])
