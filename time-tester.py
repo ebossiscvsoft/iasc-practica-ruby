@@ -16,6 +16,8 @@ from threading import Thread
 import numpy as np
 import scipy.stats as stats
 import pylab as pl
+import matplotlib
+#matplotlib.use('PS') # Use 'PS' when using on MacOS
 import matplotlib.pyplot as pyplot
 from collections import Counter
 import sys
@@ -63,6 +65,10 @@ pl.plot(h,fit,'-o')
 pl.xlabel("Time in seconds")
 pl.hist(h,density=True)     
 pl.show()
+# if you get this warning
+# time-tester.py:67: UserWarning: Matplotlib is currently using ps, which is a non-GUI backend, so cannot show the figure.
+# de-comment the line below and comment the pl.show() line
+# pl.savefig("results.ps")
 
 count = Counter([x for (x,y,z) in times])
 pyplot.pie([float(v) for v in count.values()], labels=['Status: ' + str(k) for k in count],
