@@ -1,7 +1,0 @@
-uritemplate
-matplotlib
-numpy
-scipy
-urllib3
-requests
-tk

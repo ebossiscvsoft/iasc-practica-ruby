@@ -5,7 +5,7 @@
 * Comparar comportamiento de Puma en sus múltiples modos
 * Comparar modelo de procesos y threads
 
-Durante esta práctica estaremos utilizando Ruby 2.6.5 y JRuby 9.2.8.0.
+Durante esta práctica estaremos utilizando Ruby 2.7.1 y JRuby 9.2.8.0.
 
 ## Instalacion de entornos
 
@@ -24,8 +24,8 @@ echo "source $HOME/.rvm/scripts/rvm" >> ~/.bash_profile
 Y luego, instalar Ruby y [bundler](http://bundler.io/):
 
 ```bash
-rvm install 2.6.5
-rvm use 2.6.5
+rvm install 2.7.1
+rvm use 2.7.1
 gem install bundler
 ```
 
@@ -68,30 +68,6 @@ El objetivo no es obtener tiempos exactos (ya tendremos una práctica sobre ello
 3. Ejecutar utilizando Ruby con Puma, 1 Proceso y N hilos
 4. Ejecutar utilizando Ruby con Puma, N procesos (_clustered_) y N hilos
 5. Ejecutar utilizando Jruby con Puma, 1 proceso y N hilos
-
-#### Uso de tester concurrente (Requiere python 3) [Opcional, si han avanzado bastante en la práctica]
-
-Para instalar python vean la guia de instalacion de python 3 con virtualenv [aqui](http://arquitecturas-concurrentes.github.io/guias/python3)
-
-una vez instalado y con pip3 instalar las dependencias
-
-```
-$pip3 install -r requirements.txt
-```
-
-Ejecutar el script como:
-
-```
-$python3 ./time-tester.py <url> <cantidad de hilos>
-```
-
-Por ejemplo:
-
-```
-$python3 ./time-tester.py "http://localhost:9292/cpu_bound" 100
-```
-
-
 
 #### Preguntas de auto-evaluación
 
@@ -162,7 +138,7 @@ end
 Las instrucciones anteriores corren este servidor con Ruby estándar (MRI, también llamado YARV). Para ejecutarlo con JRuby, es necesario cambiar el intérprete a mano e instalar bundler :
 
 ```
-rvm use jruby-9.2.6.0
+rvm use jruby-9.2.8.0
 gem install bundler
 ```
 
