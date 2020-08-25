@@ -69,7 +69,18 @@ El objetivo no es obtener tiempos exactos (ya tendremos una práctica sobre ello
 4. Ejecutar utilizando Ruby con Puma, N procesos (_clustered_) y N hilos
 5. Ejecutar utilizando Jruby con Puma, 1 proceso y N hilos
 
-#### Preguntas de auto-evaluación
+### Preguntas para poder prepararse antes de la conclusión
+
+#### Que buscamos como conclusión?
+
+A partir de los escenarios, lo que nos gustaria que vean es:
+
+Comparacion de las dos VMs que usan en la practica, MRI y Jruby, y como afecta al sistema:
+
+- Como se comportaria el sistema de acuerdo a cada uno de los escenarios para las dos VMs
+- Y para cada escenario, que diferencia hay entre los endpoints de io y cpu bound?
+
+#### Preguntas que pueden hacerse antes de empezar a sacar conclusiones
 
 A partir de las mediciones y comparaciones en cada escenario, deberías poder responder:
 
@@ -78,7 +89,6 @@ A partir de las mediciones y comparaciones en cada escenario, deberías poder re
 * Bajo SO threads, si la cantidad de threads aumenta ¿mejora la performance de una tarea cpu bound?
 * Bajo N procesos (modo clustered), si la cantidad de procesos aumenta por encima de la cantidad de cores de la máquina, ¿mejora la performance de una tarea cpu bound?
 * Los Green threads de Ruby, ¿son realmente green threads? (Tip: analizar mediante `htop` si el sistema operativo los ve)
-* Bonus: ¿Qué sucede si se mata (mediante `kill`) a alguno de los procesos de puma bajo el modelo _clustered_?
 
 ### FAQ
 
