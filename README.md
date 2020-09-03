@@ -2,14 +2,38 @@
 
 ## Objetivos
 
-* Comparar comportamiento de Puma en sus múltiples modos
-* Comparar modelo de procesos y threads
+- Comparar comportamiento de Puma en sus múltiples modos
+- Comparar modelo de procesos y threads
 
 Durante esta práctica estaremos utilizando Ruby 2.7.1 y JRuby 9.2.8.0.
 
 ## Instalacion de entornos
 
 A Continuacion de detallan los pasos para instalar Ruby y JRuby.
+
+## Docker
+
+La imagen tiene todas las dependencias instaladas junto con htop y ab (apache2-utils).
+El comando por defecto del container es htop.
+
+```bash
+# Armar la imagen con tag rvm
+docker build . -t rvm
+# Instanciar la imagen en un container con nombre rvm1
+docker run --name rvm1 -it rvm
+# Loguearse al container en otra terminal
+docker exec -it rvm1 bash -l
+# Para ver las versiones de ruby instaladas
+rvm list
+# Para usar Ruby 2.7.1 (rb es un alias)
+rvm use rb
+# Para usar JRuby 9.2.8.0 (jrb es un alias)
+rvm use jrb
+# Levantar el servidor (-t {minThreads}:{maxThreads} -w {workers})
+bundle exec puma -t 4:8 -w 2
+# Para probar los endpoints (c=conexiones concurrentes, n=cantidad de conexiones)
+ab -c 10 -n 100 localhost:9292/io_bound
+```
 
 ### Instalacion Ruby
 
@@ -55,9 +79,9 @@ Ante cualquier duda referirse a la documentacion de la [página](https://rvm.io/
 
 Esta práctica se realizará en varios escenarios. Para cada uno:
 
-  * analizar el comportamiento de ambas rutas, anotarlo y comparar con las configuraciones anteriores.
-  * analizar qué cantidad de threads del sistema operativo se crean (con `htop`)
-  * probar tanto con un cliente como con varios clientes concurrentes
+- analizar el comportamiento de ambas rutas, anotarlo y comparar con las configuraciones anteriores.
+- analizar qué cantidad de threads del sistema operativo se crean (con `htop`)
+- probar tanto con un cliente como con varios clientes concurrentes
 
 El objetivo no es obtener tiempos exactos (ya tendremos una práctica sobre ello) sino entender cualiativamente los modelos de SO Threads, Green Threads y Procesos.
 
@@ -84,11 +108,11 @@ Comparacion de las dos VMs que usan en la practica, MRI y Jruby, y como afecta a
 
 A partir de las mediciones y comparaciones en cada escenario, deberías poder responder:
 
-* Bajo green threads, si la cantidad de threads aumenta ¿mejora la performance de una tarea cpu bound?
-* Bajo green threads, si la cantidad de threads aumenta ¿mejora la performance de una tarea IO bound?
-* Bajo SO threads, si la cantidad de threads aumenta ¿mejora la performance de una tarea cpu bound?
-* Bajo N procesos (modo clustered), si la cantidad de procesos aumenta por encima de la cantidad de cores de la máquina, ¿mejora la performance de una tarea cpu bound?
-* Los Green threads de Ruby, ¿son realmente green threads? (Tip: analizar mediante `htop` si el sistema operativo los ve)
+- Bajo green threads, si la cantidad de threads aumenta ¿mejora la performance de una tarea cpu bound?
+- Bajo green threads, si la cantidad de threads aumenta ¿mejora la performance de una tarea IO bound?
+- Bajo SO threads, si la cantidad de threads aumenta ¿mejora la performance de una tarea cpu bound?
+- Bajo N procesos (modo clustered), si la cantidad de procesos aumenta por encima de la cantidad de cores de la máquina, ¿mejora la performance de una tarea cpu bound?
+- Los Green threads de Ruby, ¿son realmente green threads? (Tip: analizar mediante `htop` si el sistema operativo los ve)
 
 ### FAQ
 
@@ -102,19 +126,19 @@ bundle exec puma
 
 #### ¿Cómo probar el servidor?
 
-El servidor soporta dos rutas:  `/io_bound` y `/cpu_bound`. Como sus nombres lo indican, la primera realiza una tarea con mínimo procesamiento pero gran cantidad de E/S (lee un archivo), y la segunda es código puro (ejecuta una función fibonacci).
+El servidor soporta dos rutas: `/io_bound` y `/cpu_bound`. Como sus nombres lo indican, la primera realiza una tarea con mínimo procesamiento pero gran cantidad de E/S (lee un archivo), y la segunda es código puro (ejecuta una función fibonacci).
 
 Para probarlas, se puede utilizar por ejemplo:
 
-* `curl` (desde la terminal)
-* [`Postman`](https://www.getpostman.com/) (desde el browser).
+- `curl` (desde la terminal)
+- [`Postman`](https://www.getpostman.com/) (desde el browser).
 
 #### ¿Cómo controlar la cantidad de hilos y procesos
 
 El comando `puma` acepta dos parámetros para controlarlos `-t` y `-w`:
 
-* `-t` define la cantidad mínima y máxima de threads
-* `-w` define la cantidad de procesos (llamados _workers_)
+- `-t` define la cantidad mínima y máxima de threads
+- `-w` define la cantidad de procesos (llamados _workers_)
 
 Por ejemplo:
 
@@ -154,13 +178,12 @@ gem install bundler
 
 y luego ejecutar `puma` normalmente.
 
-
 #### ¿Qué puedo hacer si quiero correr (por algún motivo) el servidor con otra versión de ruby?
 
 Tenés que
 
-* modificar el archivo `.ruby-version` y el `Gemfile`,
-* luego `gem install bundler`
-* luego `bundle install`
+- modificar el archivo `.ruby-version` y el `Gemfile`,
+- luego `gem install bundler`
+- luego `bundle install`
 
 Y eso es todo.
