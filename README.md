@@ -25,7 +25,7 @@ docker run --name rvm1 -it rvm
 docker exec -it rvm1 bash -l
 # Para ver las versiones de ruby instaladas
 rvm list
-# Para usar Ruby 2.7.1 (rb es un alias)
+# Para usar Ruby 2.7.2 (rb es un alias)
 rvm use rb
 # Para usar JRuby 9.2.8.0 (jrb es un alias)
 rvm use jrb
