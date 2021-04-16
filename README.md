@@ -11,7 +11,9 @@ Durante esta práctica estaremos utilizando Ruby 2.7.1 y JRuby 9.2.8.0.
 
 A Continuacion de detallan los pasos para instalar Ruby y JRuby.
 
-## Docker
+### Docker (Opcional)
+
+> Nota: Solo tomen en cuenta esta seccion si han usado y conocen Docker.
 
 La imagen tiene todas las dependencias instaladas junto con htop y ab (apache2-utils).
 El comando por defecto del container es htop.
@@ -35,7 +37,13 @@ bundle exec puma -t 4:8 -w 2
 ab -c 10 -n 100 localhost:9292/io_bound
 ```
 
-### Instalacion Ruby
+### Usando la imagen de lubuntu (Virtualbox)
+
+En caso de que usen la imagen de lubuntu mediante Virtualbox hay que setear la misma para que utilice mas de un core (CPU)
+
+![](./img/virtualbox.png)
+
+## Instalacion Ruby
 
 Instalar [rvm](https://rvm.io).
 
