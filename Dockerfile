@@ -26,13 +26,13 @@ RUN sed -i 's/^mesg n/tty -s \&\& mesg n/g' /root/.profile
 # Switch to a bash login shell to allow simple 'rvm' in RUN commands
 SHELL ["/bin/bash", "-l", "-c"]
 RUN useradd -m --no-log-init -r -g rvm user
-RUN rvm install 2.7.1 \
-  && rvm use 2.7.1 \
+RUN rvm install 2.7.2 \
+  && rvm use 2.7.2 \
   && gem install bundler \
   && rvm get head \
   && rvm install jruby-9.2.8.0 \
   && gem install bundler \
-  && rvm alias create rb ruby-2.7.1 \
+  && rvm alias create rb ruby-2.7.2 \
   && rvm alias create jrb jruby-9.2.8.0
 
 RUN mkdir /app
