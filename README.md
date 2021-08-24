@@ -91,7 +91,7 @@ Esta práctica se realizará en varios escenarios. Para cada uno:
 - analizar qué cantidad de threads del sistema operativo se crean (con `htop`)
 - probar tanto con un cliente como con varios clientes concurrentes
 
-El objetivo no es obtener tiempos exactos (ya tendremos una práctica sobre ello) sino entender cualiativamente los modelos de SO Threads, Green Threads y Procesos.
+El objetivo no es obtener tiempos exactos sino entender cualiativamente los modelos de SO Threads, Green Threads y Procesos.
 
 #### Escenarios
 
