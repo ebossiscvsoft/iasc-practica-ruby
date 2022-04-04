@@ -17,7 +17,7 @@ get '/io_bound' do
 end
 
 get '/cpu_bound' do
-  {result: fib(45)}.to_json
+  {result: fib(34)}.to_json
 end
 
 run Sinatra::Application
