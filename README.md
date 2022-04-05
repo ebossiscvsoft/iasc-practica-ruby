@@ -5,7 +5,7 @@
 - Comparar comportamiento de Puma en sus múltiples modos
 - Comparar modelo de procesos y threads
 
-Durante esta práctica estaremos utilizando Ruby 2.7.1 y JRuby 9.2.8.0.
+Durante esta práctica estaremos utilizando Ruby 2.7.2 y JRuby 9.2.8.0.
 
 ## Instalacion de entornos
 
@@ -20,22 +20,24 @@ El comando por defecto del container es htop.
 
 ```bash
 # Armar la imagen con tag rvm
-docker build . -t rvm
+docker build . -t iasc-practica-ruby
 # Instanciar la imagen en un container con nombre rvm1
-docker run --name rvm1 -it rvm
+docker run --name iasc-practica-ruby-cont -it iasc-practica-ruby
 # Loguearse al container en otra terminal
-docker exec -it rvm1 bash -l
+docker exec -it iasc-practica-ruby-cont bash -l
 # Para ver las versiones de ruby instaladas
 rvm list
-# Para usar Ruby 2.7.2 (rb es un alias)
-rvm use rb
-# Para usar JRuby 9.2.8.0 (jrb es un alias)
-rvm use jrb
+# Para usar Ruby 2.7.2 (mri es un alias)
+rvm use mri
+# Para usar JRuby 9.2.20.0 (jruby es un alias)
+rvm use jruby
 # Levantar el servidor (-t {minThreads}:{maxThreads} -w {workers})
 bundle exec puma -t 4:8 -w 2
 # Para probar los endpoints (c=conexiones concurrentes, n=cantidad de conexiones)
 ab -c 10 -n 100 localhost:9292/io_bound
 ```
+
+> La imagen de docker tambien expone su puerto 9292, para que pueda correrse ab desde afuera.
 
 ### Usando la imagen de lubuntu (Virtualbox)
 
@@ -56,8 +58,8 @@ echo "source $HOME/.rvm/scripts/rvm" >> ~/.bash_profile
 Y luego, instalar Ruby y [bundler](http://bundler.io/):
 
 ```bash
-rvm install 2.7.1
-rvm use 2.7.1
+rvm install 2.7.2
+rvm use 2.7.2
 gem install bundler
 ```
 
