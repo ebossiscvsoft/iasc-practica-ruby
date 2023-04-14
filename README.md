@@ -39,6 +39,12 @@ ab -c 10 -n 100 localhost:9292/io_bound
 
 > La imagen de docker tambien expone su puerto 9292, para que pueda correrse ab desde afuera.
 
+Tambien pueden bajarse la imagen pre-buildeada de esta practica 
+
+```bash
+docker pull ghcr.io/arquitecturas-concurrentes/iasc-practica-ruby:main
+```
+
 ### Usando la imagen de lubuntu (Virtualbox)
 
 En caso de que usen la imagen de lubuntu mediante Virtualbox hay que setear la misma para que utilice mas de un core (CPU)
