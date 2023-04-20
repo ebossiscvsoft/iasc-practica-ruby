@@ -16,7 +16,7 @@ A Continuacion de detallan los pasos para instalar Ruby y JRuby.
 > Nota: Solo tomen en cuenta esta seccion si han usado y conocen Docker.
 
 La imagen tiene todas las dependencias instaladas junto con htop y ab (apache2-utils).
-El comando por defecto del container es htop.
+El comando por defecto del container `/bin/bash -l`
 
 ```bash
 # Armar la imagen con tag rvm
@@ -27,9 +27,9 @@ docker run --name iasc-practica-ruby-cont -it iasc-practica-ruby
 docker exec -it iasc-practica-ruby-cont bash -l
 # Para ver las versiones de ruby instaladas
 rvm list
-# Para usar Ruby 2.7.2 (mri es un alias)
+# Para usar Ruby 3.2.2 (mri es un alias)
 rvm use mri
-# Para usar JRuby 9.2.20.0 (jruby es un alias)
+# Para usar JRuby 9.3.1.0 (jruby es un alias)
 rvm use jruby
 # Levantar el servidor (-t {minThreads}:{maxThreads} -w {workers})
 bundle exec puma -t 4:8 -w 2
@@ -42,7 +42,7 @@ ab -c 10 -n 100 localhost:9292/io_bound
 Tambien pueden bajarse la imagen pre-buildeada de esta practica 
 
 ```bash
-docker pull ghcr.io/arquitecturas-concurrentes/iasc-practica-ruby:1.0.0
+docker pull ghcr.io/arquitecturas-concurrentes/iasc-practica-ruby:main
 ```
 
 ### Usando la imagen de lubuntu (Virtualbox)
@@ -64,16 +64,16 @@ echo "source $HOME/.rvm/scripts/rvm" >> ~/.bash_profile
 Y luego, instalar Ruby y [bundler](http://bundler.io/):
 
 ```bash
-rvm install 2.7.2
-rvm use 2.7.2
+rvm install 3.2.2
+rvm use 3.2.2
 gem install bundler
 ```
 
-Instalar tambien jruby 9.2.8.0:
+Instalar tambien jruby 9.3.1.0:
 
 ```bash
 rvm get head
-rvm install jruby-9.2.8.0
+rvm install jruby-9.2.1.0
 gem install bundler
 ```
 
@@ -147,7 +147,7 @@ El servidor soporta dos rutas: `/io_bound` y `/cpu_bound`. Como sus nombres lo i
 Para probarlas, se puede utilizar por ejemplo:
 
 - `curl` (desde la terminal)
-- [`Postman`](https://www.getpostman.com/) (desde el browser).
+- `ab` Apache AB (desde la terminal. RECOMENDADO) 
 
 #### ¿Cómo controlar la cantidad de hilos y procesos
 
