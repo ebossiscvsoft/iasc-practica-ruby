@@ -122,7 +122,7 @@ Comparacion de las dos VMs que usan en la practica, MRI y Jruby, y como afecta a
 
 #### Preguntas que pueden hacerse antes de empezar a sacar conclusiones
 
-A partir de las mediciones y comparaciones en cada escenario, deberías poder responder:
+A partir de las mediciones y comparaciones en cada escenario, deberían poder responder:
 
 - Bajo green threads, si la cantidad de threads aumenta ¿mejora la performance de una tarea cpu bound?
 - Bajo green threads, si la cantidad de threads aumenta ¿mejora la performance de una tarea IO bound?
@@ -147,7 +147,15 @@ El servidor soporta dos rutas: `/io_bound` y `/cpu_bound`. Como sus nombres lo i
 Para probarlas, se puede utilizar por ejemplo:
 
 - `curl` (desde la terminal)
-- `ab` Apache AB (desde la terminal. RECOMENDADO) 
+- `ab` Apache AB (desde la terminal)
+
+Recomendamos usar `ab`, ya que esta herramienta permite realizar múltiples requests con único comando, de forma concurrente. Esto les va a permitir ver más claramente cómo distintas configuraciones de puma afectan el funcionamiento de su servidor.
+
+El repo ya cuenta con dos scripts que utilizan `ab`: `ab_cpu_requests.bash` y `ab_io_requests.bash`. Estos scripts contienen las opciones que nos interesan para esta práctica:
+- `-n`: número total de requests a realizar
+- `-c`: cantidad de requests concurrentes
+
+Siéntanse libres de modificar estos scripts en base a las pruebas que quieran realizar.
 
 #### ¿Cómo controlar la cantidad de hilos y procesos
 
